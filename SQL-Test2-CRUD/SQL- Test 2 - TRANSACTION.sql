@@ -1,0 +1,9 @@
+START TRANSACTION;
+	SAVEPOINT pt1;
+    DELETE FROM invoiceline WHERE TrackId = 3177;
+    SAVEPOINT pt2;
+    DELETE FROM playlisttrack WHERE TrackId = 3177;
+    SAVEPOINT pt3;
+    DELETE FROM track WHERE TrackId = 3177;
+ROLLBACK TO SAVEPOINT pt2;
+COMMIT;
